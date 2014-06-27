@@ -11,7 +11,7 @@ I'm redistributing UsbHid.dll because I can't remember where I got it or what th
 
 If you're using this, please let me know! I always appreciate hearing people use this.
 
-
+** All images sent to the draw routines must be 96x96px to match the size of the OLED display **
 
 ## Sample Code ##
 ### Displaying a GIF ###
