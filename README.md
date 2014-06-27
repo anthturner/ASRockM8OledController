@@ -9,7 +9,7 @@ I haven't tested this in Mono yet, but I'm guessing it's dependent on getting th
 
 I'm redistributing UsbHid.dll because I can't remember where I got it or what the license is. If you own it, please let me know if I'm infringing on your license and I'll be happy to take it down and point to your website instead.
 
-If you're using this, please let me know! I always appreciate hearing people use this.
+If you're using this, please let me know! I always appreciate hearing people use this. This project is under the Apache v2 license, which can be found in LICENSE.txt.
 
 ** All images sent to the draw routines must be 96x96px to match the size of the OLED display **
 
