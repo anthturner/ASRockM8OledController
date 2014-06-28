@@ -175,11 +175,23 @@ namespace LibOLEDController.Images
             public byte Green;
             public byte Red;
             public byte Alpha;
+
+            public byte[] AsRgb565()
+            {
+                var result = new byte[2];
+                var r = (byte)((Red / 255.0) * 31); //R component
+                var g = (byte)((Green / 255.0) * 63); //G component
+                var b = (byte)((Blue / 255.0) * 31); //B component
+                result[1] = (byte)(((r & 0x1f) << 3) | ((g >> 3) & 0x7)); //R (5 bits) +  G (upper 3 bits)
+                result[0] = (byte)(((g & 0x7) << 5) | (b & 0x1f)); //G (lower 3 bits) + B (5 bits)
+
+                return result;
+            }
         }
         #endregion
 
         #region Bitmap Conversion
-        private static BitmapSource ConvertBitmap(Bitmap source)
+        protected static BitmapSource ConvertBitmap(Bitmap source)
         {
             return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                           source.GetHbitmap(),
@@ -188,7 +200,7 @@ namespace LibOLEDController.Images
                           BitmapSizeOptions.FromEmptyOptions());
         }
 
-        private static Bitmap BitmapFromSource(BitmapSource bitmapsource)
+        protected static Bitmap BitmapFromSource(BitmapSource bitmapsource)
         {
             Bitmap bitmap;
             using (var outStream = new MemoryStream())
